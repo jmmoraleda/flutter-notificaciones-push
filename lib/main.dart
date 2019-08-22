@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    final pushProvider = new PushNotificationProvider();
+    final pushProvider = new PushNotificationProvider(); // Creamos la instancia de las notificaciones
     pushProvider.initNotifications();
 
     pushProvider.mensajes.listen( (data) {

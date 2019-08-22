@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:io';
 import 'dart:async';
 
+//  Clase para manejar todas las notificaciones
 class PushNotificationProvider {
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -13,10 +14,10 @@ class PushNotificationProvider {
 
   initNotifications() {
 
-    _firebaseMessaging.requestNotificationPermissions();
+    _firebaseMessaging.requestNotificationPermissions(); // Pedimos permiso al usuario para usar notificaciones
 
 
-    _firebaseMessaging.getToken().then( (token) {
+    _firebaseMessaging.getToken().then( (token) { //  Obtenemos el token del dispositivo
 
 
       print('===== FCM Token =====');
@@ -27,7 +28,7 @@ class PushNotificationProvider {
 
     _firebaseMessaging.configure(
 
-      onMessage: ( info ) {
+      onMessage: ( info ) { //  Se dispara cuando nuestra aplicación está abierta
 
         print('======= On Message ========');
         print( info );
@@ -42,7 +43,7 @@ class PushNotificationProvider {
         _mensajesStreamController.sink.add(argumento);
 
       },
-      onLaunch: ( info ) {
+      onLaunch: ( info ) { // Se dispara cuando la aplicación está en segundo plano
 
         print('======= On Launch ========');
         print( info );
@@ -51,7 +52,7 @@ class PushNotificationProvider {
 
       },
 
-      onResume: ( info ) {
+      onResume: ( info ) {  // Se dispara cuando la aplicación está cerrada
 
         print('======= On Resume ========');
         print( info );
