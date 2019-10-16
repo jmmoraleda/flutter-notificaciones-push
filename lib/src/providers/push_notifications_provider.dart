@@ -22,13 +22,13 @@ class PushNotificationProvider {
 
       print('===== FCM Token =====');
       print( token );
-
+      // fMKLkNe9I24:APA91bGRdrUxRhYoTDlzYW0vzjsv-ebKLyfYX7u1RahKyn_1hUfOWeQmYqEZ6qFlQ25blXtkE3VSqNgnec4KpqqiTy5zDWd-VsaUz6l2jT6G7mCChcoNNezjElv2Wpkh5qd0jfZ4zmGo
     });
 
 
     _firebaseMessaging.configure(
 
-      onMessage: ( info ) { //  Se dispara cuando nuestra aplicación está abierta
+      onMessage: ( info ) async { //  Se dispara cuando nuestra aplicación está abierta
 
         print('======= On Message ========');
         print( info );
@@ -43,7 +43,7 @@ class PushNotificationProvider {
         _mensajesStreamController.sink.add(argumento);
 
       },
-      onLaunch: ( info ) { // Se dispara cuando la aplicación está en segundo plano
+      onLaunch: ( info ) async { // Se dispara cuando la aplicación está en segundo plano
 
         print('======= On Launch ========');
         print( info );
@@ -52,7 +52,7 @@ class PushNotificationProvider {
 
       },
 
-      onResume: ( info ) {  // Se dispara cuando la aplicación está cerrada
+      onResume: ( info ) async {  // Se dispara cuando la aplicación está cerrada
 
         print('======= On Resume ========');
         print( info );
